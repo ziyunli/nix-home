@@ -1,7 +1,10 @@
+{ homeDirectory
+, pkgs
+}:
+
 {
-  home-manager = {
-    enable = true;
-  };
+  # Fancy replacement for cat
+  bat.enable = true;
 
   # Easy shell environments
   direnv = {
@@ -18,5 +21,54 @@
     '';
   };
 
+  # Replacement for ls
+  exa = {
+    enable = true;
+    enableAliases = true;
+  };
+
+  # Fuzzy finder
+  fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  # The GitHub CLI
+  gh = {
+    enable = true;
+    settings = {
+      editor = "vim";
+      git_protocol = "ssh";
+      prompt = "enabled";
+      # aliases = (import ./aliases.nix { inherit homeDirectory; }).githubCli;
+    };
+  };
+
+  # But of course
+  git = import ./git.nix { inherit homeDirectory pkgs; };
+
+  home-manager = {
+    enable = true;
+  };
+
+  # JSON parsing on the CLI
+  jq.enable = true;
+
+  # For Git rebases and such
+  neovim = import ./neovim.nix {
+    inherit (pkgs) vimPlugins;
+  };
+
+  # Speed up nix search functionality
+  nix-index = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
   starship = import ./starship.nix;
+
+  zsh = import ./zsh.nix {
+    inherit homeDirectory;
+    inherit (pkgs) substituteAll;
+  };
 }

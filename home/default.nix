@@ -5,7 +5,8 @@
 , username }:
 
 let
-  packages = import ./packages.nix { inherit pkgs; };
+  # The packages to load into the PATH
+  packages = import ./packages.nix { inherit homeDirectory pkgs; };
 in {
   home = {
     inherit homeDirectory packages stateVersion username;
@@ -24,5 +25,6 @@ in {
     };
   };
 
-  programs = import ./programs.nix;
+  # Configurations for programs directly supported by Home Manager
+  programs = import ./programs.nix { inherit homeDirectory pkgs; };
 }
