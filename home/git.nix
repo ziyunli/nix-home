@@ -24,7 +24,7 @@
     ".vscode/"
     "npm-debug.log"
   ];
-  aliases = (import ./aliases.nix { inherit homeDirectory; }).git;
+  # aliases = (import ./aliases.nix { inherit homeDirectory; }).git;
 
   extraConfig = {
     core = {
