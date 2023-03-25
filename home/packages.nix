@@ -1,4 +1,6 @@
-{ pkgs }:
+{ homeDirectory
+, pkgs
+}:
 
 let
   nixTools = with pkgs; [
