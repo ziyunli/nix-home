@@ -6,3 +6,10 @@
 nix flake init \
 --template github:the-nix-way/home-manager-config-template
 ```
+
+## Building
+
+```bash
+nix build '.#homeConfigurations.ziyunli.activationPackage'
+./result/activate
+```
