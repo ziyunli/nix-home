@@ -67,10 +67,10 @@
 
   starship = import ./starship.nix;
 
-  xoxide = {
+  zoxide = {
     enable = true;
     enableZshIntegration = true;
-  }
+  };
 
   zsh = import ./zsh.nix {
     inherit homeDirectory;
