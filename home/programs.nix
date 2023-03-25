@@ -67,6 +67,11 @@
 
   starship = import ./starship.nix;
 
+  xoxide = {
+    enable = true;
+    enableZshIntegration = true;
+  }
+
   zsh = import ./zsh.nix {
     inherit homeDirectory;
     inherit (pkgs) substituteAll;
