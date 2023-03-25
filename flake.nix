@@ -48,10 +48,18 @@
       homeDirPrefix = if pkgs.stdenv.hostPlatform.isDarwin then "/Users" else "/home";
       homeDirectory = "/${homeDirPrefix}/${username}";
 
+      # Helper functions
+      run = pkg: "${pkgs.${pkg}}/bin/${pkg}";
+
       home = (import ./home {
         inherit homeDirectory pkgs stateVersion system username;
       });
     in {
+      darwinConfigurations.${username} = darwin.lib.darwinSystem {
+        inherit system;
+        modules = [ (import ./nix-darwin) ];
+      };
+
       homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
