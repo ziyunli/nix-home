@@ -11,8 +11,19 @@ let
       git-crypt
     ]);
 
+  macTools = with pkgs.darwin.apple_sdk.frameworks; [
+    CoreServices
+    Foundation
+    Security
+  ];
+
   misc = with pkgs; [
+    coreutils
+    fd
+    findutils
     hugo # for initializing projects
+    nodejs-18_x # for global npm and npx
+    openssl
     tree
     wget
     yt-dlp
@@ -28,6 +39,7 @@ let
   ];
 in
 gitTools
+++ macTools
 ++ misc
 ++ nixTools
 ++ rustTools
