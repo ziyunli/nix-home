@@ -1,1 +1,35 @@
 # Day 1: getting started
+
+After hearing about Nix for a while, I finally decided to give it a go.
+In this journal, I will be documenting my journey to learn Nix.
+
+The first thing is apparently to install Nix.
+To install Nix on my Mac, I use the https://github.com/DeterminateSystems/nix-installer[Determinate Nix Installer] which greatly simplifies the process.
+I learned about this installer from https://determinate.systems/posts/determinate-nix-installer[a blog post], which also points me to the https://zero-to-nix.com)[Zero to Nix] tutorial. By the end of the tutorial, I know several templates that I can use to start a new project in different languages. To be honest though, I still don't have a good mental model of how Nix works.
+
+Then I find out it's kinda hard to know if I am using the Nix environment or not.
+I installed a lot of tools using Homebrew already, which means the benefit of using Nix is not as obvious.
+Setting up all those tools was a hassle though, so I started to think, maybe it's a better use of my time to switch to Nix as the package manager for my Mac.
+
+From the Determinate Systems blog, I found a couple of posts that are relevant to my situation:
+
+* https://determinate.systems/posts/nix-home-env[Building a highly optimized home environment with Nix]
+* https://determinate.systems/posts/nix-direnv[Effortless dev environments with Nix and direnv]
+
+And eventually I found out the https://github.com/the-nix-way/home-manager-config-template and https://github.com/the-nix-way/nome.
+I created my own Nix configuration using the https://github.com/ziyunli/nix-home, and I cherry-picked some of the configurations from nome.
+After a day of tweaking, it gets to a decent state that has most of the common tools I need: zsh, git, zoxide, fzf, tmux, vim, etc.
+I am pretty happy with the home manager setup, which allows me to drop many Homebrew dependencies and dotfiles.
+
+I also find out some useful tools and websites:
+
+* https://nix-community.github.io/home-manager/index.html[Home Manager Manual]
+* https://nix-community.github.io/home-manager/options.html[Home Manager Options]
+* https://mipmip.github.io/home-manager-option-search/[Home Manager Option Search]
+* https://search.nixos.org/packages[Search Nix Packages]
+
+This seems to be a good start. My next step is to learn more about Nix and try to internalize the concepts.
+
+* https://ianthehenry.com/posts/how-to-learn-nix/[How to Learn Nix]
+* https://nixos.org/guides/nix-pills/[Nix Pills]
+* https://nix.dev/[nix.dev]
