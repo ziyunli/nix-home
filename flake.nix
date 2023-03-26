@@ -14,6 +14,7 @@
     rust-overlay.url = "github:oxalica/rust-overlay";
     nix-init.url = "github:nix-community/nix-init";
     flake-utils.url = "github:numtide/flake-utils";
+    devenv.url = "github:cachix/devenv/latest";
   };
 
   outputs =
@@ -24,6 +25,7 @@
     , rust-overlay
     , nix-init
     , flake-utils
+    , devenv
     }:
     let
       # Values you should modify
