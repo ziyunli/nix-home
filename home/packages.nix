@@ -11,6 +11,13 @@ let
       git-crypt
     ]);
 
+  misc = with pkgs; [
+    hugo # for initializing projects
+    tree
+    wget
+    yt-dlp
+  ];
+
   nixTools = with pkgs; [
     cachix
     lorri
@@ -21,5 +28,6 @@ let
   ];
 in
 gitTools
+++ misc
 ++ nixTools
 ++ rustTools
