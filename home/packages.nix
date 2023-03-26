@@ -4,9 +4,8 @@
 
 let
   gitTools = with pkgs.gitAndTools;
-    [ diff-so-fancy git-codeowners gitflow ]
+    [ diff-so-fancy git-codeowners gitflow tig ]
     ++ (with pkgs; [
-      tig
       difftastic
       git-annex
       git-crypt
