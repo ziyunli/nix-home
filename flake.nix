@@ -13,6 +13,7 @@
     };
     rust-overlay.url = "github:oxalica/rust-overlay";
     nix-init.url = "github:nix-community/nix-init";
+    flake-utils.url = "github:numtide/flake-utils";
   };
 
   outputs =
@@ -22,6 +23,7 @@
     , darwin
     , rust-overlay
     , nix-init
+    , flake-utils
     }:
     let
       # Values you should modify
@@ -67,5 +69,48 @@
           home
         ];
       };
-    };
+    }
+
+    //
+
+    flake-utils.lib.eachSystem [ system ] (system:
+    let
+      pkgs = import nixpkgs { inherit system; };
+    in
+    {
+      devShells.default =
+        let
+          format = pkgs.writeScriptBin "format" ''
+            ${run "nixpkgs-fmt"} **/*.nix
+          '';
+
+          reload = pkgs.writeScriptBin "reload" ''
+            ${run "nix"} build --no-sandbox .#homeConfigurations.${username}.activationPackage
+            ./result/activate
+          '';
+        in
+        pkgs.mkShell {
+          packages = [ format reload pkgs.jq ];
+        };
+
+      packages.default = pkgs.dockerTools.buildImage {
+        name = "nix-flakes";
+        tag = "latest";
+        fromImage = pkgs.dockerTools.pullImage {
+          imageName = "nixos/nix";
+          finalImageName = "nix";
+          finalImageTag = "2.12.0pre20220901_4823067";
+          imageDigest = "sha256:82da5bfe03f16bb1bc627af74e76b213fa237565c1dcd0b8d8ef1204d0960a59";
+          sha256 = "sha256-sMdYw2HtUM5r5PP+gW1xsZts+POvND6UffKvvaxcv4M=";
+        };
+
+        config = {
+          WorkingDir = "/app";
+
+          Env = [
+            "NIXPKGS_ALLOW_UNFREE=1"
+          ];
+        };
+      };
+    });
 }
