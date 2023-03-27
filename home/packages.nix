@@ -4,7 +4,7 @@
 
 let
   gitTools = with pkgs.gitAndTools;
-    [ diff-so-fancy git-codeowners gitflow tig ]
+    [ diff-so-fancy git-codeowners gitflow lucky-commit tig ]
     ++ (with pkgs; [
       difftastic
       git-annex
