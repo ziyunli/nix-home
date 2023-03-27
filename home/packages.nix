@@ -18,7 +18,7 @@ let
   ];
 
   misc = with pkgs; [
-    _1password
+    # _1password
     coreutils
     fd
     findutils
