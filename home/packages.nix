@@ -22,7 +22,7 @@ let
     coreutils
     fd
     findutils
-    hugo # for initializing projects
+    # hugo # for initializing projects
     nodejs-18_x # for global npm and npx
     openssl
     tree

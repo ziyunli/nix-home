@@ -30,7 +30,7 @@
     let
       # Values you should modify
       username = "ziyunli"; # $USER
-      system = "aarch64-darwin";  # x86_64-linux, aarch64-multiplatform, etc.
+      system = "x86_64-darwin";  # x86_64-linux, aarch64-multiplatform, etc.
       stateVersion = "23.05";     # See https://nixos.org/manual/nixpkgs/stable for most recent
 
       # System-specific Nixpkgs
