@@ -27,7 +27,6 @@ let
     openssl
     tree
     wget
-    yt-dlp
   ];
 
   nixTools = with pkgs; [
