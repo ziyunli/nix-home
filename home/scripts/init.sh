@@ -16,7 +16,7 @@ fi
 export DIRENV_LOG_FORMAT=
 
 # Enable Homebrew
-eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(/usr/local/bin/brew shellenv)"
 alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
 
 ######################################################################################
