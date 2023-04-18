@@ -37,9 +37,16 @@ let
   rustTools = with pkgs; [
     rustup # for things like `cargo init`
   ];
+
+  pythonTools = with pkgs; [
+    # conda
+    # mamba
+    micromamba
+  ];
 in
 gitTools
 ++ macTools
 ++ misc
 ++ nixTools
 ++ rustTools
+++ pythonTools
