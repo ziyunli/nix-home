@@ -18,5 +18,13 @@
     # fzf based alias
     preview = "fzf --preview 'bat --color \"always\" {}'";
 
+    # exa with extra options (extra args not supported yet in 22.11)
+    # From https://github.com/nix-community/home-manager/blob/master/modules/programs/exa.nix
+    exa = "exa --group-directories-first --header --no-user --git --icons";
+    ls = "exa";
+    ll = "exa -l";
+    la = "exa -a";
+    lt = "exa --tree";
+    lla = "exa -la";
   };
 }
