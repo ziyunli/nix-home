@@ -11,12 +11,6 @@ let
       git-crypt
     ]);
 
-  macTools = with pkgs.darwin.apple_sdk.frameworks; [
-    CoreServices
-    Foundation
-    Security
-  ];
-
   misc = with pkgs; [
     # _1password
     coreutils
@@ -45,7 +39,6 @@ let
   ];
 in
 gitTools
-++ macTools
 ++ misc
 ++ nixTools
 ++ rustTools

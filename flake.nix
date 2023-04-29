@@ -7,10 +7,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    darwin = {
-      url = "github:lnl7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     rust-overlay.url = "github:oxalica/rust-overlay";
     nix-init.url = "github:nix-community/nix-init";
     flake-utils.url = "github:numtide/flake-utils";
@@ -21,7 +17,6 @@
     { self
     , nixpkgs
     , home-manager
-    , darwin
     , rust-overlay
     , nix-init
     , flake-utils
@@ -49,7 +44,7 @@
         ];
       };
 
-      homeDirPrefix = if pkgs.stdenv.hostPlatform.isDarwin then "/Users" else "/home";
+      homeDirPrefix = "/home";
       homeDirectory = "/${homeDirPrefix}/${username}";
 
       # Helper functions
@@ -59,11 +54,6 @@
         inherit homeDirectory pkgs stateVersion system username;
       });
     in {
-      darwinConfigurations.${username} = darwin.lib.darwinSystem {
-        inherit system;
-        modules = [ (import ./nix-darwin) ];
-      };
-
       homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
