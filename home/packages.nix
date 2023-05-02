@@ -33,8 +33,8 @@ let
   ];
 
   pythonTools = with pkgs; [
-    # conda
-    # mamba
+    conda
+    mamba
     micromamba
   ];
 in
