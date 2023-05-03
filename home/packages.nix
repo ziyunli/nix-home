@@ -33,9 +33,7 @@ let
   ];
 
   pythonTools = with pkgs; [
-    conda
-    mamba
-    micromamba
+    python3
   ];
 in
 gitTools
