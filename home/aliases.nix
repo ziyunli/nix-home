@@ -20,7 +20,6 @@
 
     # exa with extra options (extra args not supported yet in 22.11)
     # From https://github.com/nix-community/home-manager/blob/master/modules/programs/exa.nix
-    exa = "exa";
     ls = "exa";
     ll = "exa -l --group-directories-first --header --no-user --git --icons";
     la = "exa -a";
