@@ -45,6 +45,10 @@ let
   rubyTools = with pkgs; [
     shadowenv
   ];
+
+  dataTools = with pkgs; [
+    redis
+  ];
 in
 gitTools
 ++ macTools
@@ -53,3 +57,4 @@ gitTools
 ++ rustTools
 ++ pythonTools
 ++ rubyTools
+++ dataTools
