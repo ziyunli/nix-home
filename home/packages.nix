@@ -41,6 +41,10 @@ let
   pythonTools = with pkgs; [
     python3
   ];
+
+  rubyTools = with pkgs; [
+    shadowenv
+  ];
 in
 gitTools
 ++ macTools
@@ -48,3 +52,4 @@ gitTools
 ++ nixTools
 ++ rustTools
 ++ pythonTools
+++ rubyTools
