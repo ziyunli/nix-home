@@ -24,10 +24,10 @@
   # Replacement for ls
   exa = {
     enable = true;
-    # enableAliases = true;
-    # extraOptions = [ "--group-directories-first" "--header" "--no-user" ];
-    # icons = true;
-    # git = true;
+    enableAliases = true;
+    extraOptions = [ "--group-directories-first" "--header" "--no-user" ];
+    icons = true;
+    git = true;
   };
 
   # Fuzzy finder
