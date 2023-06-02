@@ -40,6 +40,7 @@ let
 
   pythonTools = with pkgs; [
     python3
+    pipx
   ];
 
   rubyTools = with pkgs; [
