@@ -15,6 +15,9 @@ fi
 # Suppress direnv log output (which is super verbose and not that useful)
 export DIRENV_LOG_FORMAT=
 
+# Added /Users/ziyunli/.local/bin to the PATH environment variable
+pipx ensurepath
+
 # Enable Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
