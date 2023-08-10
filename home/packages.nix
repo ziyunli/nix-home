@@ -47,10 +47,6 @@ let
     shadowenv
   ];
 
-  elixirTools = with pkgs; [
-    elixir
-  ];
-
   dataTools = with pkgs; [
     redis
   ];
@@ -62,5 +58,4 @@ gitTools
 ++ rustTools
 ++ pythonTools
 ++ rubyTools
-++ elixirTools
 ++ dataTools
