@@ -22,7 +22,7 @@
   };
 
   # Replacement for ls
-  exa = {
+  eza = {
     enable = true;
     enableAliases = true;
     extraOptions = [ "--group-directories-first" "--header" "--no-user" ];
