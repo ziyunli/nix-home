@@ -24,7 +24,6 @@
   # Replacement for ls
   eza = {
     enable = true;
-    enableAliases = true;
     extraOptions = [ "--group-directories-first" "--header" "--no-user" ];
     icons = true;
     git = true;
