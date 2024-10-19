@@ -25,7 +25,7 @@
   eza = {
     enable = true;
     extraOptions = [ "--group-directories-first" "--header" "--no-user" ];
-    icons = true;
+    icons = "auto";
     git = true;
   };
 
