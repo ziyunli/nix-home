@@ -40,7 +40,9 @@ let
 
   pythonTools = with pkgs; [
     python3
+    python310
     pipx
+    uv
   ];
 
   rubyTools = with pkgs; [
