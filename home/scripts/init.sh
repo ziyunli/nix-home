@@ -19,13 +19,15 @@ export DIRENV_LOG_FORMAT=
 eval "$(/opt/homebrew/bin/brew shellenv)"
 alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
 
+# Added by `rbenv init` on Mon Nov 11 15:47:07 PST 2024
+eval "$(rbenv init - --no-rehash zsh)"
+
 ######################################################################################
 # Functions
 ######################################################################################
 
 # Generate .gitignore file
 function gi() { curl -sL https://www.toptal.com/developers/gitignore/api/$@;}
-
 
 # Check if main exists and use instead of master
 function git_main_branch() {
