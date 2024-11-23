@@ -22,6 +22,8 @@ alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
 # Added by `rbenv init` on Mon Nov 11 15:47:07 PST 2024
 eval "$(rbenv init - --no-rehash zsh)"
 
+source "$HOME/.rye/env"
+
 ######################################################################################
 # Functions
 ######################################################################################

@@ -41,6 +41,7 @@ let
   pythonTools = with pkgs; [
     python310
     pipx
+    rye
     uv
   ];
 
