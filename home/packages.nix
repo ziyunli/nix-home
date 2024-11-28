@@ -38,17 +38,6 @@ let
     rustup # for things like `cargo init`
   ];
 
-  pythonTools = with pkgs; [
-    python310
-    pipx
-    rye
-    uv
-  ];
-
-  rubyTools = with pkgs; [
-    shadowenv
-  ];
-
   dataTools = with pkgs; [
     redis
   ];
@@ -58,6 +47,4 @@ gitTools
 ++ misc
 ++ nixTools
 ++ rustTools
-++ pythonTools
-++ rubyTools
 ++ dataTools
