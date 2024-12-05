@@ -23,7 +23,7 @@ let
     fd
     findutils
     hugo # for initializing projects
-    nodejs-18_x # for global npm and npx
+    nodejs_22 # for global npm and npx
     openssl
     tree
     wget
