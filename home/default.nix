@@ -11,6 +11,8 @@ in {
   home = {
     inherit homeDirectory packages stateVersion username;
 
+    enableNixpkgsReleaseCheck = false;
+
     shellAliases = {
       reload-home-manager-config = "home-manager switch --flake ${builtins.toString ./.}";
     };

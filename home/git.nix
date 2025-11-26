@@ -4,11 +4,7 @@
 
 {
   enable = true;
-  userName = "Ziyun Li";
-  userEmail = "me@ziyunli.dev";
-  package = pkgs.gitAndTools.gitFull;
-
-  delta = { enable = true; };
+  package = pkgs.gitFull;
 
   lfs = { enable = true; };
 
@@ -26,7 +22,12 @@
   ];
   # aliases = (import ./aliases.nix { inherit homeDirectory; }).git;
 
-  extraConfig = {
+  settings = {
+    user = {
+      name = "Ziyun Li";
+      email = "me@ziyunli.dev";
+    };
+
     core = {
       editor = "nvim";
       whitespace = "trailing-space,space-before-tab";
