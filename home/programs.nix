@@ -6,12 +6,6 @@
   # Fancy replacement for cat
   bat.enable = true;
 
-  # Git diff viewer
-  delta = {
-    enable = true;
-    enableGitIntegration = true;
-  };
-
   # Easy shell environments
   direnv = {
     enable = true;

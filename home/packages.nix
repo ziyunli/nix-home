@@ -3,12 +3,19 @@
 }:
 
 let
-  gitTools = with pkgs;
-    [ diff-so-fancy gitflow tig difftastic git-annex git-crypt ];
+  gitTools = with pkgs.gitAndTools;
+    [ diff-so-fancy gitflow lucky-commit tig ]
+    ++ (with pkgs; [
+      difftastic
+      git-annex
+      git-crypt
+    ]);
 
-  # macOS frameworks are typically not needed in home-manager user packages
-  # They are used for building software, not as user-facing tools
-  macTools = [ ];
+  macTools = with pkgs.darwin.apple_sdk.frameworks; [
+    CoreServices
+    Foundation
+    Security
+  ];
 
   misc = with pkgs; [
     # _1password
