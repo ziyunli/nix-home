@@ -9,4 +9,10 @@
   autocd = false;
   initContent = (builtins.readFile ./scripts/init.sh);
   shellAliases = (import ./aliases.nix { inherit homeDirectory; }).shell;
+
+  oh-my-zsh = {
+    enable = true;
+    plugins = [ "macos" "colored-man-pages" "git" "gitfast" "gitignore" "tig"  ];
+    theme = "robbyrussell";
+  };
 }
