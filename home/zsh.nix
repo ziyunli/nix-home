@@ -12,7 +12,19 @@
 
   oh-my-zsh = {
     enable = true;
-    plugins = [ "macos" "colored-man-pages" "git" "gitfast" "gitignore" "tig"  ];
+    plugins = [
+      # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/macos
+      "macos"
+      # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/colored-man-pages
+      "colored-man-pages"
+      # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git
+      "git"
+      "gitfast"
+      # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/gitignore
+      "gitignore"
+      # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/tig
+      "tig"
+    ];
     theme = "robbyrussell";
   };
 }
