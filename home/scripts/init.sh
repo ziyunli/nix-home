@@ -19,6 +19,9 @@ export DIRENV_LOG_FORMAT=
 eval "$(/opt/homebrew/bin/brew shellenv)"
 alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
 
+# Dotfiles management
+alias dotfiles='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+
 # Added by `rbenv init` on Mon Nov 11 15:47:07 PST 2024
 eval "$(rbenv init - --no-rehash zsh)"
 
