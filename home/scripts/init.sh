@@ -21,7 +21,7 @@ alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
 
 # Dotfiles management
 dotfiles() {
-  GIT_DIR=$HOME/.dotfiles GIT_WORK_TREE=$HOME "$@"
+  GIT_DIR=$HOME/.dotfiles GIT_WORK_TREE=$HOME "${@:-git}"
 }
 
 # Added by `rbenv init` on Mon Nov 11 15:47:07 PST 2024
