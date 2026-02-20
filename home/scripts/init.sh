@@ -27,8 +27,6 @@ dotfiles() {
 # Added by `rbenv init` on Mon Nov 11 15:47:07 PST 2024
 eval "$(rbenv init - --no-rehash zsh)"
 
-source "$HOME/.rye/env"
-
 export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
