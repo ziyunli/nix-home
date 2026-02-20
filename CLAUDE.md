@@ -30,6 +30,10 @@ This is a Nix home-manager configuration for macOS (aarch64-darwin) that uses a 
 - The configuration assumes an Apple Silicon Mac (aarch64-darwin)
 - Development shell provides convenience scripts that wrap common operations
 
+#### Dotfiles Dependency
+
+This setup requires the [dotfiles](https://github.com/ziyunli/dotfiles) repo at `~/.dotfiles`, which provides `~/.zshrc.common`. That file manages shared zsh configuration including oh-my-zsh (theme, plugins), common aliases, FZF settings, and shell functions. The nix-home `init.sh` sources it and only adds nix/device-specific configuration on top.
+
 #### Homebrew-Managed Packages
 
 Some tools are still managed via Homebrew instead of Nix:

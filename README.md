@@ -9,6 +9,7 @@ A modular Nix home-manager configuration for macOS (aarch64-darwin) with compreh
 - Nix installed via [Determinate Systems](https://docs.determinate.systems/)
 - macOS on Apple Silicon (aarch64-darwin)
 - Homebrew (for packages not managed by Nix)
+- [dotfiles](https://github.com/ziyunli/dotfiles) repo set up at `~/.dotfiles` (provides `~/.zshrc.common` with shared zsh/oh-my-zsh configuration)
 
 ## Quick Start
 

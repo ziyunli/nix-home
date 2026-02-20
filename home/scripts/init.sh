@@ -12,27 +12,34 @@ if [ -e ~/.env.sh ]; then
   . ~/.env.sh
 fi
 
+# Enable Homebrew (must run before .zshrc.common which uses brew for completions)
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Source shared zsh configuration from dotfiles
+source "$HOME/.zshrc.common"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/opt/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
 # Suppress direnv log output (which is super verbose and not that useful)
 export DIRENV_LOG_FORMAT=
 
-# Enable Homebrew
-eval "$(/opt/homebrew/bin/brew shellenv)"
-alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
-
-# Dotfiles management
-dotfiles() {
-  GIT_DIR=$HOME/.dotfiles GIT_WORK_TREE=$HOME "${@:-git}"
-}
-
-# Added by `rbenv init` on Mon Nov 11 15:47:07 PST 2024
-eval "$(rbenv init - --no-rehash zsh)"
-
-export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
 
 # Calling nvm use automatically in a directory with a .nvmrc file - place this after nvm initialization!
 # https://github.com/nvm-sh/nvm#zsh
@@ -59,62 +66,3 @@ load-nvmrc() {
 
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
-
-######################################################################################
-# Functions
-######################################################################################
-
-# Generate .gitignore file
-function gi() { curl -sL https://www.toptal.com/developers/gitignore/api/$@;}
-
-# Check if main exists and use instead of master
-function git_main_branch() {
-  command git rev-parse --git-dir &>/dev/null || return
-  local ref
-  for ref in refs/{heads,remotes/{origin,upstream}}/{main,trunk,mainline,default}; do
-    if command git show-ref -q --verify $ref; then
-      echo ${ref:t}
-      return
-    fi
-  done
-  echo master
-}
-
-######################################################################################
-# FZF functions
-######################################################################################
-
-# Use fd (https://github.com/sharkdp/fd) instead of the default find
-# command for listing path candidates.
-# - The first argument to the function ($1) is the base path to start traversal
-# - See the source code (completion.{bash,zsh}) for the details.
-_fzf_compgen_path() {
-  fd --hidden --follow --exclude ".git" . "$1"
-}
-# Use fd to generate the list for directory completion
-_fzf_compgen_dir() {
-  fd --type d --hidden --follow --exclude ".git" . "$1"
-}
-# add support for ctrl+o to open selected file in VS Code
-export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
-# Follow symbolic links, and don't want it to exclude hidden files
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
-# To apply the command to CTRL-T as well
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
-function branches () {
-  git branch --sort=-committerdate |
-    grep --invert-match '\*' |
-    cut -c 3- |
-    fzf --preview="git log {} | bat --style=plain --color=always --line-range :500" |
-    xargs git checkout
-}
-
-# from https://seb.jambor.dev/posts/improving-shell-workflows-with-fzf/
-function delete-branches() {
-  git branch |
-    grep --invert-match '\*' |
-    cut -c 3- |
-    fzf --multi --preview="git log {}" |
-    xargs --no-run-if-empty git branch --delete --force
-}
