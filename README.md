@@ -10,6 +10,8 @@ A modular Nix home-manager configuration for macOS (aarch64-darwin) with compreh
 - macOS on Apple Silicon (aarch64-darwin)
 - Homebrew (for packages not managed by Nix)
 - [dotfiles](https://github.com/ziyunli/dotfiles) repo set up at `~/.dotfiles` (provides `~/.zshrc.common` with shared zsh/oh-my-zsh configuration)
+- Clone [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh?tab=readme-ov-file#manual-installation)
+- Clone [agkozak](https://github.com/agkozak/agkozak-zsh-prompt?tab=readme-ov-file#for-oh-my-zsh-users)
 
 ## Quick Start
 
